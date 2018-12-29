@@ -5,3 +5,8 @@ authors = ["Jason Estey <esteyj@yahoo.com>"]
 edition = "2018"
 
 [dependencies]
+gl = "0.11.0"
+
+[dependencies.sdl2]
+version = "0.32.1"
+features = ["bundled", "static-link"]

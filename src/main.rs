@@ -1,7 +1,10 @@
 extern crate gl;
 extern crate sdl2;
 
-fn main() {
+pub mod shader;
+
+fn main()
+{
 	const WINDOW_WIDTH: i32 = 800;
 	const WINDOW_HEIGHT: i32 = 600;
 	const CLEAR_COLOR_R: f32 = 0.3;
@@ -33,6 +36,18 @@ fn main() {
 		gl::Viewport(0, 0, WINDOW_HEIGHT, WINDOW_HEIGHT);
 		gl::ClearColor(CLEAR_COLOR_R, CLEAR_COLOR_G, CLEAR_COLOR_B, CLEAR_COLOR_A);
 	}
+
+	use std::ffi::CString;
+	let vert_shader =
+		shader::VertexShader::compile(
+			&CString::new(include_str!("triangle.vert")).unwrap()
+		).unwrap();
+	let frag_shader =
+		shader::FragmentShader::compile(
+			&CString::new(include_str!("triangle.frag")).unwrap()
+		).unwrap();
+	let shader_program = shader::ShaderProgram::create(&[vert_shader, frag_shader]).unwrap();
+	shader_program.set_used();
 
 	let mut event_pump = sdl.event_pump().unwrap();
 

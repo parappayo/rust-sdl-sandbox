@@ -28,7 +28,6 @@ fn main()
 		.build()
 		.unwrap();
 
-
 	let _gl_context = window.gl_create_context().unwrap();
 	let _gl = gl::load_with(|s| video_subsystem.gl_get_proc_address(s) as *const _);
 
@@ -99,6 +98,7 @@ fn main()
 		}
 
 		shader_program.set_used();
+
 		unsafe {
 			gl::BindVertexArray(vertex_array);
 			gl::DrawArrays(

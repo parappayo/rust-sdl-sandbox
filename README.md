@@ -11,3 +11,4 @@ Sandbox project for learning Rust + SDL2 + OpenGL
 * [rust-sdl2](https://github.com/Rust-SDL2/rust-sdl2)
 * [rustup](https://rustup.rs/)
 * [The Rust Book](https://doc.rust-lang.org/book/)
+* [Learn OpenGL](https://learnopengl.com/)

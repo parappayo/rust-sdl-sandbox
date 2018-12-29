@@ -39,11 +39,11 @@ fn main()
 
 	use std::ffi::CString;
 	let vert_shader =
-		shader::VertexShader::compile(
+		shader::Shader::compile_vertex_shader(
 			&CString::new(include_str!("triangle.vert")).unwrap()
 		).unwrap();
 	let frag_shader =
-		shader::FragmentShader::compile(
+		shader::Shader::compile_fragment_shader(
 			&CString::new(include_str!("triangle.frag")).unwrap()
 		).unwrap();
 	let shader_program = shader::ShaderProgram::create(&[vert_shader, frag_shader]).unwrap();

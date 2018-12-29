@@ -56,57 +56,31 @@ impl Drop for ShaderProgram {
 	}
 }
 
-pub trait Shader
+pub struct Shader
 {
-	fn id(&self) -> gl::types::GLuint;
-	fn compile(source: &CStr) -> Result<gl::types::GLuint, String>;
-}
-
-pub struct VertexShader {
 	id: gl::types::GLuint
 }
 
-impl Shader for VertexShader {
-	fn id(&self) -> gl::types::GLuint
+impl Shader {
+	pub fn id(&self) -> gl::types::GLuint
 	{
 		self.id
 	}
 
-	fn compile(source: &CStr) -> Result<gl::types::GLuint, String>
+	pub fn compile_vertex_shader(source: &CStr) -> Result<Shader, String>
 	{
 		let id = compile_shader(source, gl::VERTEX_SHADER)?;
-		Ok(VertexShader{ id });
-	}
-}
-
-impl Drop for VertexShader {
-	fn drop(&mut self)
-	{
-		unsafe {
-			gl::DeleteShader(self.id);
-		}
-	}
-}
-
-pub struct FragmentShader {
-	id: gl::types::GLuint
-}
-
-impl Shader for FragmentShader
-{
-	fn id(&self) -> gl::types::GLuint
-	{
-		self.id
+		Ok(Shader{ id })
 	}
 
-	fn compile(source: &CStr) -> Result<gl::types::GLuint, String>
+	pub fn compile_fragment_shader(source: &CStr) -> Result<Shader, String>
 	{
 		let id = compile_shader(source, gl::FRAGMENT_SHADER)?;
-		Ok(FragmentShader{ id });
+		Ok(Shader{ id })
 	}
 }
 
-impl Drop for FragmentShader {
+impl Drop for Shader {
 	fn drop(&mut self)
 	{
 		unsafe {

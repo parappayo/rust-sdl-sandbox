@@ -1,12 +1,12 @@
 [package]
 name = "sandbox"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Jason Estey <esteyj@yahoo.com>"]
-edition = "2018"
+edition = "2021"
 
 [dependencies]
-gl = "0.11.0"
+gl = "0.14.0"
 
 [dependencies.sdl2]
-version = "0.32.1"
-features = ["bundled", "static-link"]
+version = "0.35.2"
+features = ["use-bindgen", "bundled", "static-link"]

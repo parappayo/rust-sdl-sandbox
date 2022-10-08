@@ -1,6 +1,8 @@
-# MinGW Setup
+# MSYS2 MinGW Setup
 
 I got the project to build with gcc in an MSYS shell environment without using static linking for SDL2.
+
+The usual caveats apply about checking paths to see what makes sense for your environment. For example my `echo ${USERPROFILE}` is `C:\Users\jason` and my MSYS MingGW path is `C:\msys64\mingw64`. Your system paths are unlikely to match, so make the appropriate substitutions where necessary.
 
 ## Install mingw64
 
@@ -13,7 +15,7 @@ See the [official instructions](https://www.mingw-w64.org/)
 
 ## Install Rust
 
-Download `rustup.exe`
+Download `rustup-init.exe` from the [official site](https://www.rust-lang.org/tools/install).
 
 Windows terminal programs often have trouble running in a mingw shell if they prompt for input, which rustup-init.exe does. To get around this you can either use winpty or run rustup with the `-y` flag. Since we need to customize our installation, let's use winpty:
 
@@ -40,11 +42,14 @@ linker = "C:\\msys64\\mingw64\\bin\\gcc.exe"
 ar = "C:\\msys64\\mingw64\\bin\\ar.exe"
 ```
 
+You may prefer to add that to the local config for your project instead of making that a global config for your Rust environment.
+
 ## Install SDL2 Libs
 
 Download SDL2 libs: [SDL2-devel-2.0.22-mingw.zip](https://github.com/libsdl-org/SDL/releases/tag/release-2.0.22)
 
 Copy all contents
+
 * from `SDL2-devel-2.0.22-mingw.zip\SDL2-2.0.22\x86_64-w64-mingw32\lib`
 * to `C:\msys64\mingw64\x86_64-w64-mingw32\lib`
 
